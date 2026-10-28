@@ -1,0 +1,77 @@
+{
+  "name": "@lazybirdai/ai-sdk-provider",
+  "version": "0.1.0",
+  "description": "Lazybird text to speech provider for the Vercel AI SDK: 500+ voices in 150+ languages, voice cloning and SSML.",
+  "license": "MIT",
+  "author": "Lazybird <elyssia@lazybird.app>",
+  "homepage": "https://lazybird.app/text-to-speech-api",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lazybirdai/ai-sdk-provider.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lazybirdai/ai-sdk-provider/issues"
+  },
+  "keywords": [
+    "ai",
+    "ai-sdk",
+    "vercel-ai-sdk",
+    "provider",
+    "text-to-speech",
+    "tts",
+    "speech",
+    "voice",
+    "voice-cloning",
+    "lazybird"
+  ],
+  "type": "module",
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      },
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      }
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "tsup",
+    "type-check": "tsc --noEmit",
+    "test": "vitest --run",
+    "prepublishOnly": "npm run type-check && npm test && npm run build"
+  },
+  "dependencies": {
+    "@ai-sdk/provider": "^4.0.34",
+    "@ai-sdk/provider-utils": "^5.0.70"
+  },
+  "peerDependencies": {
+    "zod": "^3.25.76 || ^4.1.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.19.19",
+    "ai": "^7.0.155",
+    "tsup": "^8.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4",
+    "zod": "^4.1.8"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
