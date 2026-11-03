@@ -1,4 +1,5 @@
-# Publishes to npm with a provenance statement on every version tag (0.1.0, no "v").
+# Publishes to npm on every version tag (0.1.0, no "v") through npm trusted publishing:
+# GitHub's OIDC token signs in, so there is no npm token to renew. Provenance is attached too.
 name: Publish
 
 on:
@@ -19,7 +20,7 @@ jobs:
           node-version: 'lts/*'
           cache: 'npm'
           registry-url: 'https://registry.npmjs.org'
+      # Trusted publishing needs npm 11.5.1 or later.
+      - run: npm install -g npm@latest
       - run: npm ci
       - run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
